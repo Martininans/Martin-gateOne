@@ -1,7 +1,7 @@
 public class Tax1 {
     public static int calculateAge(String dateOfBirth) {
 
-        String[] parts = dateOfBirth.split("-","/",".");
+        String[] parts = dateOfBirth.split("-");
         int birthYear = Integer.parseInt(parts[2]);
         int birthMonth = Integer.parseInt(parts[1]);
         int birthDay = Integer.parseInt(parts[0]);
