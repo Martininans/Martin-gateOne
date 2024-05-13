@@ -7,15 +7,20 @@ public class MenstoralCycleApp{
 	int safePeriod = 1;
 	int fertilityPeriod = 1;
 	int flowDate = 1;
+	int ovulationDate = 1;
 	
 	System.out.print("Your last mestralCycle date: ");
-	int lastCycleDate =  userInput.nextInt();
+	String lastCycleDate =  userInput.nextLine();
+	LocalDate lastCycleDate = LocalDate.parse(lastCycleDate);
 
 	System.out.print("Enter your cycle duration: ");
 	int cycleDuration =  userInput.nextInt();
 
+	
 	fertilityPeriod = cycleDuration / 2;
-	safePeriod
+	LocalDate ovulationDate = lastCycleDate.plusDays(fertilityPeriod);
+	LocalDate flowDate = lastCycleDate.plusDays(cycleDuration);
+	System.out.print(flowDate);
 }
 }
 
