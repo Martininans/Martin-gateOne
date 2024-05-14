@@ -7,13 +7,15 @@ public class ATMApp {
 	private static Scanner scanner = new Scanner(System.in);
 
 	public static void main(String[] args) {
-	System.out.println("1. Create Account\n
+	String prompt = """	1. Create Account\n
 			2. Close Account\n
 			3. Deposit\n
 			4. Withdraw\n
 			5. Transfer\n
 			6. Change PIN\n
-			7. Exit");
+			7. Exit""";
+	while(True){
+	System.out.print(pompt);
 	int choice = scanner.nextInt();
 	scanner.nextLine();
 
@@ -41,6 +43,6 @@ public class ATMApp {
                     return;
                 default:
                     System.out.println("Invalid choice. Please try again.");
-
+}
 }
 }
