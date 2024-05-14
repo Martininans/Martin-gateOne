@@ -5,18 +5,21 @@ import java.util.Scanner;
 public class ATMApp {
     private static List<Account> accounts = new ArrayList<>();
     private static Scanner userInput = new Scanner(System.in);
-
     public static void main(String[] args) {
         String prompt = """	
             1. Create Account
             2. Close Account
             3. Deposit
             4. Withdraw
-            5. Transfer
-            6. Change PIN
-            7. Exit""";
+            5. Check Balance
+            6. Transfer
+            7. Change PIN
+            8. Exit""";
         while (true) {
+	System.out.println("Welcome to Semicolon International Bank");
+	System.out.println("*************************");
             System.out.println(prompt);
+	System.out.println("*************************");
             int choice = userInput.nextInt();
             userInput.nextLine();
 
@@ -33,17 +36,24 @@ public class ATMApp {
                 case 4:
                     withdraw();
                     break;
-                case 5:
+	case 5:
+	balance();
+	break;
+                case 6:
                     transfer();
                     break;
-                case 6:
+                case 7:
                     changePin();
                     break;
-                case 7:
+                case 8:
+	System.out.println("*************************");
                     System.out.println("Exiting program.");
+	System.out.println("*************************");
                     return;
                 default:
+	System.out.println("*************************");
                     System.out.println("Invalid choice. Please try again.");
+	System.out.println("*************************");
             }
         }
     }
@@ -61,8 +71,9 @@ public class ATMApp {
 
         Account account = new Account(firstName, lastName, pin, initialBalance);
         accounts.add(account);
-
+	System.out.println("*************************");
         System.out.println("Account created successfully.");
+	System.out.println("*************************");
     }
 
     private static void closeAccount() {
@@ -122,7 +133,22 @@ public class ATMApp {
             System.out.println("Account not found or incorrect PIN.");
         }
     }
+	private static void balance() {
+        System.out.println("Enter first name:");
+        String firstName = userInput.nextLine();
+        System.out.println("Enter last name:");
+        String lastName = userInput.nextLine();
+        System.out.println("Enter PIN:");
+        String pin = userInput.nextLine();
 
+        Account account = findAccount(firstName, lastName);
+        if (account != null && account.checkPin(pin)) {
+            double balance = account.getBalance();
+            System.out.println("Your current balance is: " + balance);
+        } else {
+            System.out.println("Account not found or incorrect PIN.");
+        }
+}
     private static void transfer() {
         System.out.println("Enter first name:");
         String firstName = userInput.nextLine();
